@@ -2,9 +2,7 @@
 
 * Overview of Database Management Systems (DBMS)
     
-* Introduction to SQL databases
-    
-* Introduction to NoSQL databases
+* SQL and NoSQL databases
     
 * SQL vs. NoSQL: Understanding the differences
     
