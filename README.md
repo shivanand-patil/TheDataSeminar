@@ -1,10 +1,10 @@
 # The Data Seminar
 
-![The Data Seminar](tweet.png)
+![https://x.com/LVNilesh/status/1769527179740664115?s=20](tweet.png)
 
-## Introduction to Database Systems:
+## Managing data:
 
-### Overview of Database Management Systems (DBMS)
+### Database Management Systems (DBMS)
 
 #### SQL vs. NoSQL: Understanding the differences
 
@@ -17,13 +17,15 @@
 
 - store stuff in a file, sqlite
 
-- Trade-offs Between SQL and NoSQL:\*\*
+### database systems
+
+- Trade-offs Between SQL and NoSQL:
 
 - Analyzing the trade-offs in performance, scalability, and consistency
 
 - Use cases best suited for SQL vs. NoSQL
 
-**Deep Dive into NoSQL Databases:**
+### Deep Dive into NoSQL Databases:
 
 - Types of NoSQL databases: Key-Value, Document, Column, Graph
 
@@ -31,7 +33,9 @@
 
 - Real-world applications of NoSQL
 
-**NoSQL Database Uses in Scalability and High Availability: ((WHY use NoSQL)**
+### NoSQL Database Uses in Scalability and High Availability
+
+((WHY use NoSQL)
 
 - Scalability challenges and solutions in NoSQL
 
@@ -39,13 +43,13 @@
 
 - Replication and sharding
 
-**Enterprise Solutions and NoSQL (HOWs and WHYs):**
+### Enterprise Solutions and NoSQL (HOWs and WHYs):
 
 - Overview of enterprise NoSQL solutions: Aerospike, Cassandra, Elasticsearch etc
 
 - How enterprises utilize NoSQL for performance and scalability
 
-**System Design Concepts around NoSQL:**
+### System Design Concepts around NoSQL
 
 - Data modeling for NoSQL databases
 
@@ -53,7 +57,7 @@
 
 - Partitioning and sharding in detail
 
-**Database Internals:**
+### Database Internals:
 
 - Understanding the internals of SQL and NoSQL databases
 
@@ -61,7 +65,7 @@
 
 - The role of caching in database performance
 
-**Distributed Systems and Databases:**
+### Distributed Systems and Databases:
 
 - Fundamentals of distributed systems
 
