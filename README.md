@@ -1,6 +1,6 @@
 # The Data Seminar
 
-![https://x.com/LVNilesh/status/1769527179740664115?s=20](tweet.png)
+[![The Data Seminar](tweet.png "A very fat cat")](https://x.com/LVNilesh/status/1769527179740664115?s=20)
 
 ## Managing data:
 
