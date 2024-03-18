@@ -1,66 +1,70 @@
-**Introduction to DB:**
+# The Data Seminar
 
-* Overview of Database Management Systems (DBMS)
-    
-* SQL and NoSQL databases
-    
-* SQL vs. NoSQL: Understanding the differences
-    
+![The Data Seminar](tweet.png)
 
-**Trade-offs Between SQL and NoSQL:**
+## Introduction to Database Systems:
 
-* Analyzing the trade-offs in performance, scalability, and consistency
-    
-* Use cases best suited for SQL vs. NoSQL
-    
+### Overview of Database Management Systems (DBMS)
+
+#### SQL vs. NoSQL: Understanding the differences
+
+- What is SQL
+- What is NoSQL
+- Why do we need a Schema?
+- Schema on read (SQL) versus Schema on Write (NoSQL)
+
+### primitive datastores
+
+- store stuff in a file, sqlite
+
+- Trade-offs Between SQL and NoSQL:\*\*
+
+- Analyzing the trade-offs in performance, scalability, and consistency
+
+- Use cases best suited for SQL vs. NoSQL
 
 **Deep Dive into NoSQL Databases:**
 
-* Types of NoSQL databases: Key-Value, Document, Column, Graph
-    
-* Popular NoSQL databases: MongoDB, Redis, Cassandra
-    
-* Real-world applications of NoSQL
-    
+- Types of NoSQL databases: Key-Value, Document, Column, Graph
+
+- Popular NoSQL databases: MongoDB, Redis, Cassandra
+
+- Real-world applications of NoSQL
 
 **NoSQL Database Uses in Scalability and High Availability: ((WHY use NoSQL)**
 
-* Scalability challenges and solutions in NoSQL
-    
-* High availability concepts in NoSQL databases
-    
-* Replication and sharding
-    
+- Scalability challenges and solutions in NoSQL
+
+- High availability concepts in NoSQL databases
+
+- Replication and sharding
 
 **Enterprise Solutions and NoSQL (HOWs and WHYs):**
 
-* Overview of enterprise NoSQL solutions: Aerospike, Cassandra, Elasticsearch etc
-    
-* How enterprises utilize NoSQL for performance and scalability
-    
+- Overview of enterprise NoSQL solutions: Aerospike, Cassandra, Elasticsearch etc
+
+- How enterprises utilize NoSQL for performance and scalability
 
 **System Design Concepts around NoSQL:**
 
-* Data modeling for NoSQL databases
-    
-* Indexing strategies in NoSQL
-    
-* Partitioning and sharding in detail
-    
+- Data modeling for NoSQL databases
+
+- Indexing strategies in NoSQL
+
+- Partitioning and sharding in detail
 
 **Database Internals:**
 
-* Understanding the internals of SQL and NoSQL databases
-    
-* Storage engines: How data is stored and retrieved
-    
-* The role of caching in database performance
-    
+- Understanding the internals of SQL and NoSQL databases
+
+- Storage engines: How data is stored and retrieved
+
+- The role of caching in database performance
 
 **Distributed Systems and Databases:**
 
-* Fundamentals of distributed systems
-    
-* The role of databases in distributed architectures
-    
-* current trends in distributed databases
+- Fundamentals of distributed systems
+
+- The role of databases in distributed architectures
+
+- current trends in distributed databases
