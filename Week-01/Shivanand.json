@@ -1,0 +1,21 @@
+{
+	"_id": ObjectId(),
+  "firstName": "Shivanand",
+  "middleName": "IDK",
+  "lastName": "Patil",
+
+  "Address": {
+    "Street": "1600 Penn Ave",
+    "City": "Washington DC",
+    "ZipPIN": "90210",
+    "Country": "US"
+  },
+  "Peoms": {
+    "P1": "Johnny Johnny Yes Papa",
+    "P2": "The Road Not Taken"
+  },
+  "Videos": {
+    "v1": "string but a giant 4.2GB MP4 file",
+    "v2": "string but another giant 6.2GB MP4 file"
+  }
+}

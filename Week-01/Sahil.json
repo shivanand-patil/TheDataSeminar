@@ -1,0 +1,16 @@
+{
+  "firstName": "Sahil",
+  "middleName": "IDK",
+  "lastName": "Sagwekar",
+
+  "Address": {
+    "Street": "IDK",
+    "City": "Dombey Valley",
+    "ZipPIN": "90210",
+    "Country": "IN"
+  },
+  "Peoms": {
+    "P1": "Some other",
+    "P2": "This or that"
+  }
+}
