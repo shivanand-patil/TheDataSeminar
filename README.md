@@ -17,6 +17,12 @@
 
 - store stuff in a file, sqlite
 
+### concepts
+
+- Indexing, Transactions
+- Mysql Config, Backup and Recovery
+- Server logs, DB replication
+
 ### database systems
 
 - Trade-offs Between SQL and NoSQL:
