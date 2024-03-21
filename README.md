@@ -8,6 +8,8 @@
 
 ### Week-01
 
+<iframe src="https://player.vimeo.com/video/925660810" width="1920" height="1080" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><p><a href="https://vimeo.com/925660810">01 - 2024 thedataseminar</a> from <a href="https://vimeo.com/user556549">Cloud Genius®</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 - AuthZ vs AuthN
 - SQL vs NoSQL
 - Hands on MongoDB and Mongo Express
