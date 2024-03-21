@@ -8,7 +8,7 @@
 
 ### Week-01
 
-[![video](https://cdn.pixabay.com/photo/2014/10/09/13/14/video-481821_1280.png)](https://player.vimeo.com/video/925660810)
+[![video](play.jpg)](https://player.vimeo.com/video/925660810)
 
 - AuthZ vs AuthN
 - SQL vs NoSQL
