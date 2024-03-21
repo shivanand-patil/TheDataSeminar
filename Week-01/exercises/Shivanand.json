@@ -15,7 +15,7 @@
     "P2": "The Road Not Taken"
   },
   "Videos": {
-    "v1": "string but a giant 4.2GB MP4 file",
-    "v2": "string but another giant 6.2GB MP4 file"
+    "v1": "videos are best stored externally with a url reference in here however, NoSQL like hadoop can accept a giant 4.2GB MP4 file",
+    "v2": "videos are best stored externally with a url reference in here however, NoSQL like hadoop can accept another giant 6.2GB MP4 file"
   }
 }
