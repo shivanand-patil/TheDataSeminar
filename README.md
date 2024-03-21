@@ -13,6 +13,10 @@
 - Why do we need a Schema?
 - Schema on read (SQL) versus Schema on Write (NoSQL)
 
+#### JSON and BSON
+
+https://www.mongodb.com/basics/bson
+
 ### primitive datastores
 
 - store stuff in a file, sqlite
