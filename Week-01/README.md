@@ -28,6 +28,8 @@ NoSQL databases are non-relational databases that provide flexible schema design
 **Real-life Example:**
 A social media platform like Facebook uses a NoSQL database to store vast amounts of user-generated content, such as posts, comments, and likes. The flexible schema of a NoSQL database allows for easy storage and retrieval of diverse data types.
 
+[Refer this](list.md) for examples
+
 ## Steps for SQL
 
 1. **Decide the Schema**: Define the structure of the database including tables, columns, and relationships between tables.
