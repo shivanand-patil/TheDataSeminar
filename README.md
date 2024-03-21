@@ -1,6 +1,6 @@
 # The Data Seminar
 
-[![The Data Seminar](tweet.png "A very fat cat")](https://x.com/LVNilesh/status/1769527179740664115?s=20)
+[![The Data Seminar](images/tweet.png "A very fat cat")](https://x.com/LVNilesh/status/1769527179740664115?s=20)
 
 ## Managing data:
 
@@ -8,7 +8,7 @@
 
 ### Week-01
 
-[![video](play.jpg)](https://player.vimeo.com/video/925660810)
+[![video](images/play.jpg)](https://player.vimeo.com/video/925660810)
 
 - AuthZ vs AuthN
 - SQL vs NoSQL
