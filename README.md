@@ -18,11 +18,12 @@
 ### Week-02
 
 - Indexing and Transactions
+- What are file descriptors and how they relate to DB performance?
 - MySQL Configuration, Backup and Recovery
 - Server logs, Database replication
 - CAP theorem in NoSQL, Distributed system/database
-- Data Partioning and Sharding
-- Consistent Hasing and Quorums in NoSQL
+- Data Partitioning, Sharding and Replicasets
+- Consistent Hashing and Quorums in NoSQL
 
 #### SQL vs. NoSQL: Understanding the differences
 
@@ -57,7 +58,7 @@ https://www.mongodb.com/basics/bson
 
 ### NoSQL Database Uses in Scalability and High Availability
 
-((WHY use NoSQL)
+(WHY use NoSQL)
 
 - Scalability challenges and solutions in NoSQL
 
@@ -94,3 +95,9 @@ https://www.mongodb.com/basics/bson
 - The role of databases in distributed architectures
 
 - current trends in distributed databases
+
+### Cache databases
+
+- How do Cache databases work.
+
+- How to implement Redis.
