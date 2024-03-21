@@ -1,6 +1,6 @@
 # The Data Seminar
 
-[<img src="images/tweet.png" width="300">](https://x.com/LVNilesh/status/1769527179740664115?s=20)
+[<img src="images/tweet.png" width="600">](https://x.com/LVNilesh/status/1769527179740664115?s=20)
 
 ## Managing data:
 
