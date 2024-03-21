@@ -8,19 +8,21 @@
 
 ### Week-01
 
-- A
-- B
-- C
-- D
-- Write here what we covered today.
+- AuthZ vs AuthN
+- SQL vs NoSQL
+- Hands on MongoDB and Mongo Express
+- Understanding Nosql records/documents, JSON vs BSON
+- Hands on Mariadb Adminer
+- SQLite
 
 ### Week-02
 
-- E
-- F
-- G
-- H
-- Write here what you want me to cover in second week.
+- Indexing and Transactions
+- MySQL Configuration, Backup and Recovery
+- Server logs, Database replication
+- CAP theorem in NoSQL, Distributed system/database
+- Data Partioning and Sharding
+- Consistent Hasing and Quorums in NoSQL
 
 #### SQL vs. NoSQL: Understanding the differences
 
