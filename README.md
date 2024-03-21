@@ -1,6 +1,6 @@
 # The Data Seminar
 
-[![The Data Seminar| width=100](images/tweet.png "A very fat cat")](https://x.com/LVNilesh/status/1769527179740664115?s=20)
+[<img src="images/tweet.png" width="100">](https://x.com/LVNilesh/status/1769527179740664115?s=20)
 
 ## Managing data:
 
