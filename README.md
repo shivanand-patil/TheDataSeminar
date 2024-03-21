@@ -46,7 +46,7 @@ Indexing is the process of organizing and categorizing data in a database or inf
 
 Transactions are a way of ensuring data integrity and consistency in a database. A transaction is a group of one or more database operations that are executed as a single unit of work. Transactions are used to ensure that either all of the operations in the group are completed successfully, or none of them are completed. This helps to prevent data inconsistencies and ensures that the database remains in a consistent state.
 
-- What are file descriptors and how they relate to DB performance?
+- What are file descriptors and how do they relate to DB performance?
 
 File descriptors are a way for a program to access a file or other resource on a computer's file system. They are used by the operating system to keep track of the open files and their status.
 
