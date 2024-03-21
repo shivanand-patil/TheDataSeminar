@@ -31,6 +31,12 @@
   - MS SQL
   - Oracle
 
+- backend as a service (includes a database)
+
+  - firebase
+  - supabase
+  - appwrite
+
 - Understanding Nosql records/documents
 - JSON vs BSON https://www.mongodb.com/basics/bson
 
