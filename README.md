@@ -6,6 +6,22 @@
 
 ### Database Management Systems (DBMS)
 
+### Week-01
+
+- A
+- B
+- C
+- D
+- Write here what we covered today.
+
+### Week-02
+
+- E
+- F
+- G
+- H
+- Write here what you want me to cover in second week.
+
 #### SQL vs. NoSQL: Understanding the differences
 
 - What is SQL
