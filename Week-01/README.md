@@ -54,7 +54,7 @@ A social media platform like Facebook uses a NoSQL database to store vast amount
 
 In summary, Schema on Write (SQL) requires careful planning and adherence to predefined schemas, similar to cooking in a small kitchen with limited resources. Schema on Read (NoSQL), on the other hand, offers more flexibility and adaptability, allowing for experimentation and improvisation, much like cooking in a farm house where you have more freedom to use different ingredients and cooking methods.
 
-## MongoDB Docker Compose Example [click-here](03-mongodb/docker-compose.yaml)
+## MongoDB Docker Compose Example [click-here](Week-01/exercises/03-mongodb/docker-compose.yaml)
 
 ```yaml
 version: "3.1"
@@ -110,7 +110,7 @@ services:
 
 This configuration sets up a MongoDB database and a web-based admin interface for managing it, with appropriate environment variables for authentication and access configuration.
 
-## Mariadb Docker Compose Example [click-here](02-mariadb/docker-compose.yaml)
+## Mariadb Docker Compose Example [click-here](Week-01/exercises/02-mariadb/docker-compose.yaml)
 
 ```yaml
 # Use root/example as user/password credentials
