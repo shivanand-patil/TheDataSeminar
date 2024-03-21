@@ -1,6 +1,6 @@
 # The Data Seminar
 
-[<img src="images/tweet.png" width="100">](https://x.com/LVNilesh/status/1769527179740664115?s=20)
+[<img src="images/tweet.png" width="300">](https://x.com/LVNilesh/status/1769527179740664115?s=20)
 
 ## Managing data:
 
@@ -8,7 +8,7 @@
 
 ### Week-01
 
-[![video| width=30](images/play.jpg)](https://player.vimeo.com/video/925660810)
+[<img src="images/play.jpg" width="300">](https://player.vimeo.com/video/925660810)
 
 - AuthZ vs AuthN
 - SQL vs NoSQL
