@@ -23,13 +23,15 @@
 
 - Indexing and Transaction
 - What are file descriptors and how do they relate to DB performance
-- MySQL Configuration, Backup and Recovery
-- Server logs, Database replication
-- CAP theorem in NoSQL, Distributed system/database
-- Data Partitioning, Sharding and Replicasets
-- Consistent Hashing and Quorums in NoSQL
+- MariaDB Configuration, Backup and Recovery
+- MariaDB types of db replication
+- MariaDB semi-sync replication exercise
 
 ### Week-03
+
+- Data Partitioning, Sharding and Replicasets
+- CAP theorem in NoSQL, Distributed system/database
+- Consistent Hashing and Quorums in NoSQL
 
 #### SQL vs. NoSQL: Understanding the differences
 

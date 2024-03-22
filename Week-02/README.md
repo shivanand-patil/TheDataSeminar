@@ -99,3 +99,34 @@ sudo apt install lsof -y
 ```
 
 - System Monitoring: Monitor system resource usage, including the number of open file descriptors, to identify potential bottlenecks. Operating system tools like lsof (list open files) can be helpful.
+
+#### MariaDB database replication
+
+MariaDB supports several methods for database replication, each offering different characteristics:
+
+- Asynchronous Replication (Most Common):
+
+This is the most widely used method. Changes are written to the binary log on the master server and then asynchronously applied to the slave server at a later time. Offers good performance as the master and slave don't need to be in sync constantly, but there can be a slight delay in data being reflected on the slave.
+
+- Semi-synchronous Replication:
+
+Provides a balance between performance and data consistency. Data is written to the binary log on the master and then acknowledged by at least one slave before the write is committed on the master. Offers a faster recovery time in case of a master failure compared to asynchronous replication, but with slightly more overhead.
+
+- Galera Cluster (Synchronous Replication):
+
+This is a multi-master replication approach using the Galera library for group communication. All nodes in the cluster have a copy of the database and maintain consistency through a consensus algorithm. Offers high availability and data consistency, but can have higher resource requirements and potentially slightly lower performance compared to asynchronous methods.
+
+- Multi-source Replication:
+
+Allows replicating data from multiple master servers to a single slave server. Useful for scenarios where data originates from different sources. Requires more complex configuration but can be helpful in specific use cases.
+
+#### Choosing the Right Method:
+
+The best replication method depends on your specific needs:
+
+- Performance requirements: How critical is it to have the latest data on the slave?
+- Data consistency: How important is it to guarantee that data on the master and slave are always identical?
+- Availability: How important is it to have a highly available database setup?
+- Complexity: How comfortable are you with managing a more complex replication configuration?
+
+For most basic scenarios, asynchronous replication is a good starting point due to its simplicity and good performance. If you need more immediate data consistency or higher availability, explore semi-synchronous replication or Galera Cluster. Multi-source replication is more specific to situations with multiple data sources.
