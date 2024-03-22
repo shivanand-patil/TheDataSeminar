@@ -1,15 +1,20 @@
 https://mariadb.org/mariadb-semi-sync-replication-using-containers/
 
+Download
+
 ```
 wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replicatio/.env
 
 wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-02/exercises/mariadb-replicatio/docker-compose.yaml
+```
 
+Create a master and two replicas
+
+```
 docker compose up -d
 
 docker compose ps
 
-docker compose down --remove-orphans
 ```
 
 Check that semi-sync is enabled using the mariadb client
@@ -107,4 +112,10 @@ docker exec -it mariadb-primary mariadb -uroot -psecret -e "show master status;"
 
 docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from testdb.t"
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "select * from testdb.t"
+```
+
+Destroy everything
+
+```
+docker compose down --remove-orphans
 ```
