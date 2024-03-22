@@ -129,6 +129,12 @@ docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from test
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "select * from testdb.t"
 ```
 
+Show replica hosts
+
+```
+docker exec -it mariadb-primary mariadb -uroot -psecret -e "SHOW REPLICA HOSTS;"
+```
+
 Destroy everything
 
 ```
