@@ -69,31 +69,39 @@ docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "show databases lik
 docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "show databases like '%test%'";
 ```
 
-Start replicating
+Transaction:
 
-We will perform 2 transactions.
-For each transaction we will check
-the primary status query (status below),
+```
+CREATE TABLE `t` (
+  `t` char(15) NOT NULL
+);
+```
 
 validate the binlog using the mariadb-binlog client (binlog below),
-results of replication, validated on the replica (replica below).
-
-Transaction 1: create table t(t int)
-Status (we get the new name of the file and the current position in the binlog)
 
 ```
 docker exec -it mariadb-primary mariadb -uroot -psecret -e "show master status;"
 docker exec mariadb-primary mariadb-binlog /var/lib/mysql/mariadb-bin.000002
 
+```
+
+INSERT VALUES using adminer
+
+and
+
+results of replication, validated on the replica (replica below).
+
+```
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "show replica status \G;"
 docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "show replica status \G;"
 
-INSERT MORE VALUES
+```
 
+Check the content of the table t in test database
+
+```
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "use testdb; show tables; show create table t;"
-
 docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "use testdb; show tables; show create table t;"
-
 
 docker exec -it mariadb-primary mariadb -uroot -psecret -e "show master status;"
 
