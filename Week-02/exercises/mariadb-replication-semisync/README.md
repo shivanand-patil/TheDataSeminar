@@ -127,8 +127,8 @@ docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "use testdb; show t
 
 docker exec -it mariadb-primary mariadb -uroot -psecret -e "show master status;"
 
-docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from testdb.t"
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "select * from testdb.t"
+docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from testdb.t"
 ```
 
 Show replica hosts
