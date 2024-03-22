@@ -1,6 +1,10 @@
 https://mariadb.org/mariadb-semi-sync-replication-using-containers/
 
 ```
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replicatio/.env
+
+wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-02/exercises/mariadb-replicatio/docker-compose.yaml
+
 docker compose up -d
 
 docker compose ps
