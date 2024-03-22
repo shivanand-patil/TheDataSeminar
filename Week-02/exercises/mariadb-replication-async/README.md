@@ -35,18 +35,6 @@ docker compose ps
 
 ```
 
-Check that semi-sync is enabled using the mariadb client
-
-```
-docker exec -it mariadb-primary mariadb -uroot -psecret -e "select @@rpl_semi_sync_master_enabled;"
-```
-
-Check the rpl_semi_sync_master_timeout variable (default 10 [s]). When this time elapses and the primary doesn’t get any acknowledgment from the replica, it switches back to asynchronous replication.
-
-```
-docker exec -it mariadb-primary mariadb -uroot -psecret -e "select @@rpl_semi_sync_master_timeout;"
-```
-
 Check primary status (check position in the binlog as well as the name of the binlog).
 
 ```
@@ -75,14 +63,6 @@ example of fresh start
 
 ```
 docker exec mariadb-primary mariadb-binlog /var/lib/mysql/mariadb-bin.000002
-```
-
-Check replica’s status
-
-```
-docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "select @@rpl_semi_sync_slave_enabled;"
-
-docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select @@rpl_semi_sync_slave_enabled;"
 ```
 
 Check replicated database
@@ -143,8 +123,8 @@ docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "use testdb; show t
 
 docker exec -it mariadb-primary mariadb -uroot -psecret -e "show master status;"
 
-docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from testdb.t"
 docker exec -it mariadb-replica-1 mariadb -uroot -psecret -e "select * from testdb.t"
+docker exec -it mariadb-replica-2 mariadb -uroot -psecret -e "select * from testdb.t"
 ```
 
 Show replica hosts
