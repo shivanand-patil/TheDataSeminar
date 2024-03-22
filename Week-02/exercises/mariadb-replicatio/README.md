@@ -80,6 +80,21 @@ Transaction:
 CREATE TABLE `t` (
   `t` char(15) NOT NULL
 );
+
+INSERT INTO `t` (`t`)
+VALUES ('Nilesh');
+
+INSERT INTO `t` (`t`)
+VALUES ('Ayaan');
+
+INSERT INTO `t` (`t`)
+VALUES ('Vikas');
+
+INSERT INTO `t` (`t`)
+VALUES ('Sahil');
+
+INSERT INTO `t` (`t`)
+VALUES ('Shivanand');
 ```
 
 validate the binlog using the mariadb-binlog client (binlog below),
