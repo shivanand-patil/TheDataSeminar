@@ -3,5 +3,5 @@
 ```
 openssl rand -base64 756 > replica.key
 chmod 600 replica.key
-chown 999:999 replica.key
+sudo chown 999:999 replica.key
 ```
