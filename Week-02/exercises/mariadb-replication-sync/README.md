@@ -44,8 +44,8 @@ rm -rf roles collections ~/.ansible
 ansible-galaxy install -r requirements.yaml --force
 
 ansible all -m ping
-ansible all -a "apt update"
-ansible all -a "apt install ufw -y"
+ansible all -a "apt-get update"
+ansible all -a "apt-get install ufw -y"
 ansible all -a "ufw status"
 ansible all -a "ufw allow 3306,4567,4568,4444/tcp"
 ansible all -a "ufw allow 4567/udp"
