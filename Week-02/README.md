@@ -60,7 +60,23 @@ Databases often rely on file system access for various reasons:
 - Accessing temporary files during operations.
 - Logging database activity.
 
-A limited number of file descriptors are available on a system.
+#### Limitations
+
+The number of available file descriptors on a Linux system depends on two limits:
+
+- Soft Limit: This is a per-user (or per-process) limit that can be adjusted dynamically. You can check the current soft limit for the user you're logged in with using the `ulimit -n` command:
+
+```
+ulimit -n
+```
+
+- Hard Limit: This is a system-wide limit set by the administrator and represents the maximum allowed file descriptors for any user. You can't directly view this limit using a user command, but some system information tools might reveal it.
+
+Kernel Parameter (/proc/sys/fs/file-max): This file in the /proc filesystem shows the system's global maximum number of file descriptors. However, this doesn't necessarily reflect the actual available count, as some might be reserved by the kernel or other processes.
+
+```
+cat /proc/sys/fs/file-max
+```
 
 If a database application opens too many files (due to high connection volume, frequent temporary files, etc.), it can:
 
@@ -74,8 +90,12 @@ Here's how excessive FDs can affect DB performance:
 
 #### Optimizing for Performance:
 
-- Database Configuration: Some databases allow configuration options to control how many temporary files are created or how connections are pooled. Tuning these settings can help reduce FD -usage.
-- Application Design: Efficient application design that minimizes unnecessary file operations can help keep FD usage in check. Consider connection pooling and caching strategies.
-- System Monitoring: Monitor system resource usage, including the number of open file descriptors, to identify potential bottlenecks. Operating system tools like lsof (list open files) can be helpful.
+- Database Configuration: Some databases allow configuration options to control how many temporary files are created or how connections are pooled. Tuning these settings can help reduce FD usage.
 
-By understanding the relationship between file descriptors and database performance, you can take steps to optimize your database setup and application design to avoid FD-related slowdowns.
+- Application Design: Efficient application design that minimizes unnecessary file operations can help keep FD usage in check. Consider connection pooling and caching strategies.
+
+```
+sudo apt install lsof -y
+```
+
+- System Monitoring: Monitor system resource usage, including the number of open file descriptors, to identify potential bottlenecks. Operating system tools like lsof (list open files) can be helpful.
