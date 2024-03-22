@@ -1,0 +1,11 @@
+galera-cluster-nodes:
+  hosts:
+    one:
+      ansible_host: 142.93.206.132
+      ansible_user: root
+    two:
+      ansible_host: 142.93.200.206
+      ansible_user: root
+    three:
+      ansible_host: 64.227.17.46
+      ansible_user: root
