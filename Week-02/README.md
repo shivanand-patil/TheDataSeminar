@@ -15,7 +15,7 @@ It is simply an integer number that uniquely represents an opened file.
 Every running program starts with three files already opened:
 
 ```
-Standard In	stdin	0		Input from the keyboard
+Standard In	  stdin	0		Input from the keyboard
 Standard Out		stdout	1		Output to the console
 Standard Error		stderr	2		Error output to the console
 
