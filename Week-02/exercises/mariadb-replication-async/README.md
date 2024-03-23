@@ -21,9 +21,8 @@ Compared to async replication, semi-sync replication provides improved data inte
 #### Download
 
 ```
-wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replicatio/.env
-
-wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-02/exercises/mariadb-replicatio/docker-compose.yaml
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replication-async/.env
+wget https://github.com/shivanand-patil/TheDataSeminar/blob/main/Week-02/exercises/mariadb-replication-async/docker-compose.yaml
 ```
 
 Create a master and two replicas
