@@ -21,7 +21,7 @@
 
 ### Week-02
 
-- Indexing and Transaction
+- Indexing, Transactions and Isolation levels in SQL
 - What are file descriptors and how do they relate to DB performance
 - MariaDB Configuration, Backup and Recovery
 - MariaDB types of db replication
