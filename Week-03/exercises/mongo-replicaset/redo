@@ -1,5 +1,0 @@
-docker compose down --remove-orphans
-sudo rm -rf volumes/
-docker compose up -d
-docker compose logs -f mongo-setup
-docker compose logs -f mongo-express
