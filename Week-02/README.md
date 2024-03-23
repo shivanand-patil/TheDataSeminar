@@ -6,6 +6,12 @@ Indexing is the process of organizing and categorizing data in a database or inf
 
 Transactions are a way of ensuring data integrity and consistency in a database. A transaction is a group of one or more database operations that are executed as a single unit of work. Transactions are used to ensure that either all of the operations in the group are completed successfully, or none of them are completed. This helps to prevent data inconsistencies and ensures that the database remains in a consistent state.
 
+#### Isolation levels:
+
+Isolation levels in database systems help solve concurrency problems by determining the degree to which one transaction is isolated from the effects of other concurrent transactions. By defining strict rules for data access and modification, isolation levels ensure data consistency and integrity in a multi-user environment.
+
+![Isolation levels in mysql](../images/isolation_levels.png)
+
 #### File descriptors:
 
 File descriptors are an index into a file descriptor table stored by the kernel. The kernel creates a file descriptor in response to an open call and associates the file descriptor with some abstraction of an underlying file-like object, be that an actual hardware device, or a file system or something else entirely. Consequently a process's read or write calls that reference that file descriptor are routed to the correct place by the kernel to ultimately do something useful.
