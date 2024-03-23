@@ -31,3 +31,14 @@ Test the replication status
 ```
 docker compose exec -it mongod1 mongosh -u "nilesh" -p "A12345"  --eval "rs.status();"
 ```
+
+Misc
+
+```
+mongosh
+
+use admin;
+db.auth("nilesh","A12345");
+
+db.createUser({user:"user",pwd:"pass",roles:["clusterAdmin","readWriteAnyDatabase","dbAdminAnyDatabase","userAdminAnyDatabase"]});
+```
