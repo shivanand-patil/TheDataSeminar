@@ -25,3 +25,9 @@ docker compose up -d
 docker compose logs -f mongo-setup
 docker compose logs -f mongo-express
 ```
+
+Test the replication status
+
+```
+docker compose exec -it mongod1 mongosh -u "nilesh" -p "A12345"  --eval "rs.status();"
+```
