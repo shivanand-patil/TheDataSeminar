@@ -5,9 +5,9 @@ https://mariadb.org/mariadb-semi-sync-replication-using-containers/
 Download
 
 ```
-wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replicatio/.env
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replication-semisync/.env
 
-wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-02/exercises/mariadb-replicatio/docker-compose.yaml
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-02/exercises/mariadb-replication-semisync/docker-compose.yaml
 ```
 
 Create a master and two replicas
