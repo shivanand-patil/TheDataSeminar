@@ -12,6 +12,26 @@ Isolation levels in database systems help solve concurrency problems by determin
 
 ![Isolation levels in mysql](../images/isolation_levels.png)
 
+#### Table locks:
+
+In MySQL, table locks are a mechanism used to manage access to a table in a database. They play a crucial role in ensuring data integrity and consistency, especially in environments where multiple users or processes might try to access the same data simultaneously. There are two primary types of table locks in MySQL: read locks (shared locks) and write locks (exclusive locks). Here’s a quick overview of both:
+
+    Read Locks (Shared Locks):
+        These allow multiple transactions to read (SELECT) from a table without interfering with each other.
+        Other transactions can also acquire read locks on the same table concurrently.
+        However, no transaction can write to the table until all read locks on the table are released.
+
+    Write Locks (Exclusive Locks):
+        These allow a transaction to write to a table (such as INSERT, UPDATE, or DELETE operations).
+        When a transaction holds a write lock on a table, no other transaction can read from or write to the table until the lock is released.
+        This ensures that write operations do not conflict with each other or with read operations.
+
+The use of table locks is managed by MySQL's internal lock manager and depends on the storage engine being used (e.g., InnoDB, MyISAM). Different storage engines handle locking mechanisms in different ways:
+
+    InnoDB: Uses row-level locking for most operations, reducing the need for table-level locks. However, table locks can still be explicitly acquired or might be used internally in certain scenarios.
+    MyISAM: Relies more heavily on table-level locks, as it does not support row-level locking. This can lead to contention in high-concurrency environments.
+
+
 #### File descriptors:
 
 File descriptors are an index into a file descriptor table stored by the kernel. The kernel creates a file descriptor in response to an open call and associates the file descriptor with some abstraction of an underlying file-like object, be that an actual hardware device, or a file system or something else entirely. Consequently a process's read or write calls that reference that file descriptor are routed to the correct place by the kernel to ultimately do something useful.
