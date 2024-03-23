@@ -3,7 +3,7 @@ services:
   # mongodb replicaset primary
   mongod1:
     container_name: mongod1
-    image: mongo:6.0
+    image: mongo:7
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
@@ -21,7 +21,7 @@ services:
   # mongodb replicaset secondary
   mongod2:
     container_name: mongod2
-    image: mongo:6.0
+    image: mongo:7
     expose:
       - 27017
     volumes:
@@ -33,7 +33,7 @@ services:
   # mongodb replicaset arbiter
   mongod3:
     container_name: mongod3
-    image: mongo:6.0
+    image: mongo:7
     expose:
       - 27017
     volumes:
@@ -43,7 +43,7 @@ services:
     command: "mongod --bind_ip_all --replSet dbrs --keyFile /data/replica.key"
 
   mongo-setup:
-    image: mongo:6.0
+    image: mongo:7
     container_name: mongo-setup
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
