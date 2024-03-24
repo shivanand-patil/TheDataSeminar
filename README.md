@@ -23,7 +23,7 @@
 
 - Indexing, Transactions, Isolation levels and Table locks in SQL
 - What are file descriptors and how do they relate to DB performance
-- MariaDB Configuration, Backup and Recovery
+- MariaDB Configuration, logging, monitoring, Backup and Recovery
 - MariaDB types of db replication
 - MariaDB semi-sync replication exercise
 
