@@ -1,4 +1,4 @@
-version: "3"
+--
 x-common-variables: &common-variables
   MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
   MARIADB_REPLICATION_USER: ${MARIADB_REPLICATION_USER}
@@ -44,6 +44,8 @@ services:
       - MARIADB_USER=testuser
       - MARIADB_PASSWORD=password
       - MARIADB_DATABASE=testdb
+    ports:
+      - 3306:3306
 
   replica1:
     <<:

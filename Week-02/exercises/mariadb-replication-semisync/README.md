@@ -19,6 +19,12 @@ docker compose ps
 
 ```
 
+Connection String:
+
+```
+DATABASE_URL="mysql://root:secret@cosmos.cg.home.arpa:3306/testdb"
+```
+
 Check that semi-sync is enabled using the mariadb client
 
 ```

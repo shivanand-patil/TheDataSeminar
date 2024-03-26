@@ -1,4 +1,4 @@
-version: "3"
+--
 x-common-variables: &common-variables
   MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
   MARIADB_REPLICATION_USER: ${MARIADB_REPLICATION_USER}
