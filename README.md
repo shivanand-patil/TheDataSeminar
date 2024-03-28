@@ -23,12 +23,13 @@
 
 - Indexing, Transactions, Isolation levels and Table locks in SQL
 - What are file descriptors and how do they relate to DB performance
-- MariaDB Configuration, logging, monitoring, Backup and Recovery
 - MariaDB types of db replication
-- MariaDB semi-sync replication exercise
+- MariaDB async and semi-sync replication exercise
 
 ### Week-03
 
+- MariaDB Configuration, logging, monitoring
+- MariaDB Backup and Recovery
 - Data Partitioning, Sharding and Replicasets
 - CAP theorem in NoSQL, Distributed system/database
 - Consistent Hashing and Quorums in NoSQL
