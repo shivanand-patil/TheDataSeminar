@@ -21,6 +21,8 @@
 
 ### Week-02
 
+[<img src="images/play.jpg" width="300">](https://player.vimeo.com/video/928133493)
+
 - Indexing, Transactions, Isolation levels and Table locks in SQL
 - What are file descriptors and how do they relate to DB performance
 - MariaDB types of db replication
