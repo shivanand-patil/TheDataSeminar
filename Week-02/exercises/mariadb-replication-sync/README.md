@@ -63,11 +63,16 @@ ansible-playbook main.yaml
 ```
 Create database and insert data into dB to verify that replication is working.
 
+
 - on Node 1:
 
-	create database galeratest;
+mysql -uroot -proot
+
+create database galeratest;
 
 - on Node 2
+
+mysql -uroot -proot
 
 USE galeratest;
 
@@ -93,7 +98,11 @@ VALUES ('Shivanand');
 
 - on Node 3:
 
-	select * from t;
+mysql -uroot -proot
+
+USE galeratest;
+select * from t;
+
 
 ```
 

@@ -12,3 +12,8 @@
     mariadb_galera_cluster_bootstrap_node: one
     galera_mysql_first_node: one
     galera_cluster_nodes: "{{ groups['galera-cluster-nodes'] }}"
+
+    # private cloud uses
+    galera_cluster_bind_interface: "ens3"
+    # digital ocean uses
+    # galera_cluster_bind_interface: "eth0"
