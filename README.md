@@ -30,6 +30,7 @@
 
 ### Week-03
 
+- MariaDB Sync Replication
 - MariaDB Configuration, logging, monitoring
 - MariaDB Backup and Recovery
 - Data Partitioning, Sharding and Replicasets
