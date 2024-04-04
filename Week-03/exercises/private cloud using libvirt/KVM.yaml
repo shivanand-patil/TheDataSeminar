@@ -28,6 +28,9 @@
           - python3-libvirt
           - virt-manager
           - network-manager # for nmcli in ubuntu desktop
+          - genisoimage
+          - net-tools
+          - arp-scan
         state: present
         update_cache: yes
       when: ansible_os_family == "Debian"
@@ -64,16 +67,17 @@
       community.general.nmcli:
         type: bridge
         conn_name: br0
+        mac: "2e:80:0d:12:6a:e2"
         state: present
 
     - name: sudo nmcli con add type bridge-slave ifname eno1 master br0
       # Change enp1s0 to eno1 when using with venus.cg.home.arpa
-      # sudo nmcli con add type bridge-slave ifname enp1s0 master br0
-      # sudo nmcli con add type bridge-slave ifname eno1 master br0
+      # sudo nmcli con add type bridge-slave ifname enp1s0 master br0     <<< when using testbed
+      # sudo nmcli con add type bridge-slave ifname eno1 master br0       <<< when using venus
       community.general.nmcli:
         slave_type: bridge
         type: ethernet
-        conn_name: enp1s0
+        conn_name: eno1
         master: br0
         state: present
 
@@ -124,6 +128,10 @@
         get_checksum: no
       register: reboot_required_file
 
+    - name: set_fact for the nodes new IP - by now, the bridge is activated and received a new IP via DHCP
+      set_fact:
+        ansible_host: "192.168.1.16"
+
     - name: Reboot the server (if required).
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible"
@@ -148,16 +156,16 @@
     - name: Example clone of a single branch
       ansible.builtin.git:
         repo: https://github.com/beacloudgenius/create-vm.git
-        dest: /home/cloudgenius/create-cm
+        dest: /home/cloudgenius/create-vm
         single_branch: yes
         version: main
 
     - name: chown
       shell: |
-        chown -R cloudgenius:cloudgenius  /home/cloudgenius/create-cm
-        echo "export PATH=$PATH:/home/cloudgenius/create-cm" >> /home/cloudgenius/.bashrc
+        chown -R cloudgenius:cloudgenius  /home/cloudgenius/create-vm
+        echo "export PATH=$PATH:/home/cloudgenius/create-vm" >> /home/cloudgenius/.bashrc
 
-    - name: create-vm setup
+    - name: create-vm setup part 1
       shell: |
         sudo usermod --append --groups cloudgenius libvirt-qemu
         sudo systemctl restart libvirtd
@@ -168,14 +176,15 @@
         sudo mkdir -p /home/cloudgenius/vms/virsh/base
         sudo chown -R cloudgenius:cloudgenius /home/cloudgenius/vms
 
-    - name: download cloud image
+    - name: create-vm setup part 2
       command:
         cmd: wget -O /home/cloudgenius/vms/virsh/base/jammy-server-cloudimg-amd64.img http://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+        creates: /home/cloudgenius/vms/virsh/base/jammy-server-cloudimg-amd64.img
 
     - name: create-vm setup part 3
       shell: |
         sudo chown -R cloudgenius:cloudgenius /home/cloudgenius/vms
-        sudo apt install -y genisoimage net-tools
+        # sudo apt install -y genisoimage net-tools
         sudo systemctl restart libvirtd
         sudo mkdir /home/cloudgenius/.ssh
         wget -O  /home/cloudgenius/.ssh/id_rsa.pub https://github.com/lvnilesh.keys
