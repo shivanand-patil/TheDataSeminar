@@ -1,0 +1,10 @@
+---
+all:
+  children:
+    boxes:
+      children:
+        home:
+          hosts:
+            testbed.cg.home.arpa:
+              # ansible_host: 192.168.1.16
+              ansible_python_interpreter: /usr/bin/python3
