@@ -1,0 +1,119 @@
+# ONE VM
+
+```
+create-vm -n yyyy \
+		-i ~/vms/virsh/base/jammy-server-cloudimg-amd64.img \
+		-k ~/.ssh/id_rsa.pub
+
+/usr/bin/virt-install \
+		--name=yyyy \
+		--network bridge=br0,model=virtio \
+		--import \
+		--disk path=/home/cloudgenius/vms/virsh/images/yyyy.img,format=qcow2 \
+		--disk path=/home/cloudgenius/vms/virsh/images/yyyy-cidata.img,device=cdrom \
+		--ram=2048 --vcpus=2 --autostart --hvm --arch x86_64 --accelerate \
+		--check-cpu --osinfo detect=on,require=off --force \
+		--watchdog=default --graphics vnc,listen=0.0.0.0 \
+		--noautoconsole --debug
+
+delete-vm yyyy
+```
+
+# multiple VM
+
+```
+
+# CREATE
+for n in `seq 1 3`; do
+		create-vm -n nilesh$n \
+		-i ~/vms/virsh/base/jammy-server-cloudimg-amd64.img \
+		-k ~/.ssh/id_rsa.pub \
+		-s 40 \
+		-b br0
+done
+
+
+# GET IP ADDRESS
+for n in `seq 1 3`; do
+		get-vm-ip nilesh$n
+done
+
+
+# DESTROY
+for n in `seq 1 3`; do
+		delete-vm nilesh$n
+done
+
+
+```
+
+# manual creation using ISO
+
+```
+sudo ls -l /var/lib/libvirt/images
+
+cd ~/vm
+qemu-img create -f raw ubucow.qcow2 +32G
+sudo chown libvirt-qemu:kvm ubucow.qcow2
+sudo chmod 664 ubucow.qcow2
+
+sudo chown libvirt-qemu:kvm /home/cloudgenius/Downloads/ubuntu-22.04.4-live-server-amd64.iso
+
+virt-install \
+ --name ubucow \
+ --description "ubucow in kvm" \
+ --memory 2048 \
+ --vcpus 2 \
+ --disk path=/home/cloudgenius/vm/ubucow.qcow2,size=32 \
+ --cdrom /home/cloudgenius/Downloads/ubuntu-22.04.4-live-server-amd64.iso \
+ --graphics vnc \
+ --os-variant ubuntu22.04 \
+ --virt-type kvm \
+ --autostart \
+ --network network=kvmbridge
+
+```
+
+The command above tells `virt-install` we want to use VNC to view the VM's display and give it keyboard/mouse input. Note that you'll connect to the *host* and not to the guest's IP address with your VNC client.
+
+First, figure out which port to use.
+
+```
+
+$ virsh vncdisplay ubucow
+127.0.0.1:1
+
+```
+
+This tells us that we can connect to the VNC server on the host's port `5900 + 1`.
+
+It also tells us that the VNC server on this host is listening on `localhost` only. You can use SSH port forwarding to create a tunnel from port `5999` on your desktop to port `5901` on the server:
+
+```
+ssh -L 5999:localhost:5901 test.cg.home.arpa
+```
+
+Once that's up and running, you can open your favorite VNC client, connect to `localhost:5999` (no authentication required), and walk through the Ubuntu installer to get your VM up and running.
+
+## Helpful commands [](https://www.dzombak.com/blog/2024/02/Setting-up-KVM-virtual-machines-using-a-bridged-network.html#helpful-commands)
+
+When troubleshooting or trying to understand the network state on your host VM, the following commands are useful:
+
+# misc
+
+```
+virsh list
+virsh domifaddr yyyy
+virsh net-list
+virsh net-info kvmbridge
+virsh net-dhcp-leases kvmbridge
+brctl show br0
+
+```
+
+https://earlruby.org/2023/02/quickly-create-guest-vms-using-virsh-cloud-image-files-and-cloud-init/
+https://github.com/earlruby/create-vm?tab=readme-ov-file
+https://github.com/earlruby/create-vm.git
+
+sudo apt-get install whois -y
+passwd: mkpasswd --method=SHA-512 --rounds=4096

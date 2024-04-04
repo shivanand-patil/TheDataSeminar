@@ -1,0 +1,200 @@
+---
+# create-vm -n xxxx -i ~/vms/virsh/base/jammy-server-cloudimg-amd64.img -k ~/.ssh/id_rsa.pub
+
+# https://www.dzombak.com/blog/2024/02/Setting-up-KVM-virtual-machines-using-a-bridged-network.html
+# https://www.cyberciti.biz/faq/how-to-add-network-bridge-with-nmcli-networkmanager-on-linux/
+# https://linuxconfig.org/how-to-use-bridged-networking-with-libvirt-and-kvm
+# https://www.redhat.com/sysadmin/setup-network-bridge-VM
+# https://www.dzombak.com/blog/2024/02/Setting-up-KVM-virtual-machines-using-a-bridged-network.html#iptables-considerations-for-hosts-that-also-run-docker
+
+- name: Install KVM on Ubuntu hosts
+  hosts: testbed.cg.home.arpa
+  become: yes
+  tasks:
+    - name: Install KVM and related packages on Ubuntu
+      apt:
+        name:
+          - git
+          - qemu-efi
+          - qemu-kvm
+          - libvirt-daemon-system
+          - libvirt-clients
+          - virtinst
+          - libguestfs-tools
+          - libosinfo-bin
+          - bridge-utils
+          - libvirt-daemon
+          - libvirt-daemon-driver-storage-zfs
+          - python3-libvirt
+          - virt-manager
+          - network-manager # for nmcli in ubuntu desktop
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: test for kvm-ok
+      command: kvm-ok
+      register: kvmout
+    - debug: var=kvmout.stdout_lines
+    # - debug: var=kvmout # this is most detailed
+    # - debug: msg="{{ kvmout.stdout }}"
+    # - debug: msg="{{ kvmout.stderr }}"
+
+    - name: adding existing user cloudgenius to group sudo
+      # sudo adduser cloudgenius libvirt
+      user:
+        name: cloudgenius
+        groups: libvirt
+        append: yes
+
+    - name: adding existing user cloudgenius to group sudo
+      # sudo adduser cloudgenius kvm
+      user:
+        name: cloudgenius
+        groups: kvm
+        append: yes
+
+    - name: Make sure libvirtd service unit is running
+      # sudo systemctl start libvirtd
+      ansible.builtin.systemd_service:
+        state: started
+        name: libvirtd
+
+    - name: Create master br0 - sudo nmcli con add type bridge ifname br0 with specifically chosen mac address for static IP via DHCP
+      community.general.nmcli:
+        type: bridge
+        conn_name: br0
+        state: present
+
+    - name: sudo nmcli con add type bridge-slave ifname eno1 master br0
+      # Change enp1s0 to eno1 when using with venus.cg.home.arpa
+      # sudo nmcli con add type bridge-slave ifname enp1s0 master br0
+      # sudo nmcli con add type bridge-slave ifname eno1 master br0
+      community.general.nmcli:
+        slave_type: bridge
+        type: ethernet
+        conn_name: enp1s0
+        master: br0
+        state: present
+
+    - name: sudo nmcli con modify br0 bridge.stp no
+      # sudo nmcli con modify bridge-br0 bridge.stp no
+      # nmcli -f bridge con show bridge-br0 # bridge settings show disabled STP:
+      command:
+        cmd: nmcli con modify br0 bridge.stp no
+      register: nmcli_con_cmd_result
+    - debug: var=nmcli_con_cmd_result.stdout_lines
+
+    - name: sudo nmcli con up br0 # ip address will change via DHCP
+      command:
+        cmd: nmcli con up br0
+      register: nmcli_con_cmd_result
+    - debug: var=nmcli_con_cmd_result.stdout_lines
+
+    - name: Template kvmbridge.xml to /home/cloudgenius/kvmbridge.xml
+      ansible.builtin.template:
+        src: ../templates/kvmbridge.xml
+        dest: /home/cloudgenius/kvmbridge.xml
+        owner: cloudgenius
+        group: cloudgenius
+        mode: "0644"
+
+    - name: virsh net-define kvmbridge.xml
+      shell: |
+        virsh net-define kvmbridge.xml
+        virsh net-start kvmbridge
+        virsh net-autostart kvmbridge
+        sudo iptables -A FORWARD -p all -i br0 -j ACCEPT
+      register: net_define
+    - debug: var=net_define.stdout_lines
+    # Installing Docker enables netfilter for bridge interfaces on the host machine. This is needed because Docker creates and manages iptables rules to isolate bridge networks from each other and allow them access to the network. These docker rules will break networking for your VMs. In my case I wanted all VMs to have access to the network as if they were real, physical machines; and to do this I added a single iptables rule on the host:
+
+    - name: Run the equivalent of "apt-get update" as a separate step
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+
+    - name: Check if a reboot is required.
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+        get_checksum: no
+      register: reboot_required_file
+
+    - name: Reboot the server (if required).
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible"
+        connect_timeout: 5
+        reboot_timeout: 300
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: uptime
+      when: reboot_required_file.stat.exists == true
+
+    - name: Remove dependencies that are no longer required.
+      ansible.builtin.apt:
+        autoremove: yes
+
+    - name: Change file ownership, group and permissions
+      ansible.builtin.file:
+        path: /home/cloudgenius
+        owner: cloudgenius
+        group: cloudgenius
+        mode: "750"
+
+    - name: Example clone of a single branch
+      ansible.builtin.git:
+        repo: https://github.com/beacloudgenius/create-vm.git
+        dest: /home/cloudgenius/create-cm
+        single_branch: yes
+        version: main
+
+    - name: chown
+      shell: |
+        chown -R cloudgenius:cloudgenius  /home/cloudgenius/create-cm
+        echo "export PATH=$PATH:/home/cloudgenius/create-cm" >> /home/cloudgenius/.bashrc
+
+    - name: create-vm setup
+      shell: |
+        sudo usermod --append --groups cloudgenius libvirt-qemu
+        sudo systemctl restart libvirtd
+        sudo usermod --append --groups kvm cloudgenius
+        # grep libvirt-qemu /etc/group
+        # cloudgenius:x:1000:libvirt-qemu
+        # libvirt-qemu:x:64055:libvirt-qemu
+        sudo mkdir -p /home/cloudgenius/vms/virsh/base
+        sudo chown -R cloudgenius:cloudgenius /home/cloudgenius/vms
+
+    - name: download cloud image
+      command:
+        cmd: wget -O /home/cloudgenius/vms/virsh/base/jammy-server-cloudimg-amd64.img http://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+
+    - name: create-vm setup part 3
+      shell: |
+        sudo chown -R cloudgenius:cloudgenius /home/cloudgenius/vms
+        sudo apt install -y genisoimage net-tools
+        sudo systemctl restart libvirtd
+        sudo mkdir /home/cloudgenius/.ssh
+        wget -O  /home/cloudgenius/.ssh/id_rsa.pub https://github.com/lvnilesh.keys
+        sudo chown -R cloudgenius:cloudgenius /home/cloudgenius/.ssh
+
+    - name: sudo nmcli -g GENERAL.STATE c s "Wired connection 1" # check the state of the wiredconnection
+      command:
+        cmd: nmcli -g GENERAL.STATE c s "Wired connection 1"
+        # cmd: nmcli -g GENERAL.STATE c s "br0"
+      register: wiredconnection
+    # - debug: var=wiredconnection
+
+    - name: sudo nmcli con down "Wired connection 1" # and bring it down if it was activated -- also NOTE: This breaks RDP and ssh and Ansible of course
+      command:
+        cmd: nmcli con down "Wired connection 1"
+      register: wiredconnection
+      when: wiredconnection.stdout == "activated"
+    - debug: var=wiredconnection
+# create-vm -n node1 \
+#     -i ~/vms/virsh/base/jammy-server-cloudimg-amd64.img \
+#     -k ~/.ssh/id_rsa.pub \
+#     -s 40
