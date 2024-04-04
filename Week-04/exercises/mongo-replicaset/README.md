@@ -9,9 +9,9 @@ sudo chown 999:999 replica.key
 ### Gather the files needed
 
 ```
-wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-04/exercises/mongo-replicaset/.env
-wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-04/exercises/mongo-replicaset/docker-compose.yaml
-wget https://github.com/shivanand-patil/TheDataSeminar/raw/main/Week-04/exercises/mongo-replicaset/mongodb_rs_init.sh
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-04/exercises/mongo-replicaset/.env
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-04/exercises/mongo-replicaset/docker-compose.yaml
+wget https://raw.githubusercontent.com/shivanand-patil/TheDataSeminar/main/Week-04/exercises/mongo-replicaset/mongodb_rs_init.sh
 
 chmod +x mongodb_rs_init.sh
 ```
