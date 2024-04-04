@@ -30,7 +30,10 @@
 
 ### Week-03
 
-- MariaDB Sync Replication
+- MariaDB Sync Replication using Libvirt/KVM and ansible
+
+### Week-04
+
 - MariaDB Configuration, logging, monitoring
 - MariaDB Backup and Recovery
 - Data Partitioning, Sharding and Replicasets
