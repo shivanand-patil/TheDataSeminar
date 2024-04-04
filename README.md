@@ -30,6 +30,8 @@
 
 ### Week-03
 
+[<img src="images/play.jpg" width="300">](https://player.vimeo.com/video/930401223)
+
 - MariaDB Sync Replication using Libvirt/KVM and ansible
 
 ### Week-04
