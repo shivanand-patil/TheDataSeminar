@@ -26,12 +26,13 @@ Because you can't be using VirtualBox on Linux in 2024.
 
 #### [Link to the presentation](https://drive.google.com/file/d/1RhOAzH33IeUe-gG7i6fKyWHydJT8LmkR/view)
 
-
+```bash
 sudo usermod -aG libvirt-qemu cloudgenius
-
-
+```
+```bash
 sudo usermod -aG libvirt $(whoami)
 newgrp libvirt
-
-
+```
+```bash
 sudo virt-install --name debian --memory 1024 --vcpus 1 --disk=size=10,backing_store=/home/cloudgenius/Downloads/debian-11-generic-amd64.qcow2 --cloud-init user-data=./cloud-init.yaml,disable=on --osinfo=debian11
+```
