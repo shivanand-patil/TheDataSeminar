@@ -39,36 +39,13 @@
 - Mongodb and Mongo Replicaset exercises
 
 
-### To be decided
+### Week-05
 
-- MariaDB Configuration, logging, monitoring
-- MariaDB Backup and Recovery
-- Data Partitioning, Sharding and Replicasets
-- CAP theorem in NoSQL, Distributed system/database
-- Consistent Hashing and Quorums in NoSQL
+- DB Backup and Recovery
+- Data Partitioning and Sharding
+- CAP theorem
+- Consistent Hashing and Quorums
 
-#### SQL vs. NoSQL: Understanding the differences
-
-- What is SQL
-- What is NoSQL
-- Why do we need a Schema?
-- Schema on read (SQL) versus Schema on Write (NoSQL)
-
-#### JSON and BSON
-
-https://www.mongodb.com/basics/bson
-
-### primitive datastores
-
-- store stuff in a file, sqlite
-
-### database systems
-
-- Trade-offs Between SQL and NoSQL:
-
-- Analyzing the trade-offs in performance, scalability, and consistency
-
-- Use cases best suited for SQL vs. NoSQL
 
 ### Deep Dive into NoSQL Databases:
 
