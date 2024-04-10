@@ -45,7 +45,7 @@
 - Data Partitioning and Sharding
 - CAP theorem
 - Consistent Hashing and Quorums
-
+- HTTPS for docker 
 
 ### Deep Dive into NoSQL Databases:
 
