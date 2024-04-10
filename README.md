@@ -36,6 +36,11 @@
 
 ### Week-04
 
+- Mongodb and Mongo Replicaset exercises
+
+
+### To be decided
+
 - MariaDB Configuration, logging, monitoring
 - MariaDB Backup and Recovery
 - Data Partitioning, Sharding and Replicasets
