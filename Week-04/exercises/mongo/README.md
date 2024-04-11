@@ -46,7 +46,7 @@ mongo-express:
 
 ## Run Docker-Compose
 
-Run the following command to start the services defined in the [docker-compose.yml](mongo/docker-compose.yaml) file:
+Run the following command to start the services defined in the [docker-compose.yml](docker-compose.yaml) file:
 
 ```bash
 docker-compose up -d
