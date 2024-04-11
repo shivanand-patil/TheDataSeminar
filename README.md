@@ -47,6 +47,11 @@
 - Consistent Hashing and Quorums
 - HTTPS for docker 
 
+
+
+
+
+### To be decided
 ### Deep Dive into NoSQL Databases:
 
 - Types of NoSQL databases: Key-Value, Document, Column, Graph
