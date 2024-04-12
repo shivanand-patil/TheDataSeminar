@@ -35,6 +35,7 @@
 - MariaDB Sync Replication using Libvirt/KVM and ansible
 
 ### Week-04
+[<img src="images/play.jpg" width="300">](https://player.vimeo.com/video/933031086)
 
 - Mongodb and Mongo Replicaset exercises
 
@@ -45,7 +46,7 @@
 - Data Partitioning and Sharding
 - CAP theorem
 - Consistent Hashing and Quorums
-- HTTPS for docker 
+- HTTPS for docker
 
 
 
